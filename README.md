@@ -9,7 +9,9 @@
 
 - Integrated CRUD-operations through methods: GET, POST, PUT, DELETE.
 
-- Automatic initialization of data base (if does not exist).
+- Registration and authorization (no authentication yet, let's assume this is done only for the employees of the library)
+
+- Automatically loging errors by use of custom middleware
 
 - Well-structured project with modular code.
 
@@ -17,15 +19,30 @@
 
 - Responses are handled inside the route functions giving consistent error messages with appropriate status codes.
 
+- Saving error logs using custom middleware (which can be modified to save errors even to the database).
+
+- Integrated CORS to assure security and allow only specified domains (front - end, for example).
+
 ## Usage: 
 
-| Method | Endpoint | Description               |
-|--------|----------|---------------------------|
-| GET    | /        | Get all                   |
-| POST   | /        | Add new book              |
-| GET    | /:id     | Get book by ID            |
-| PUT    | /:id     | Update book by ID         |
-| DELETE | /:id     | Delete book by ID         |
+| Method |       Endpoint       |             Description              | 
+|--------|----------------------|--------------------------------------|
+| GET    | /books/find          | Returns all books                    |
+| GET    | /books/find?title=x  | Returns a book with title x          |
+| GET    | /books/find?author=x | Returns a book with specified author |
+| GET    | /books/find/:id      | Returns a book with specified id     |
+| POST   | /login               | Allows user to login                 | 
+| POST   | /refresh             | Refreshes the access token           |
+| POST   | /logout              | Allows user to logout                |
+| POST   | /register            | Registers a new user                 |
+| POST   | /books/add           | Adds a book to the data base         |
+| PUT    | /books/update/:id    | Updates a book with specified id     |
+| DELETE | /books/delete/:id    | Deletes a book with specified id     |
+
+### Notice:
+
+- If you are going to test the api using tools like Postman (which do not send information about origin of request), include || !origin in the if statement in corsOptions.ts, otherwise CORS will not allow any actions. 
+- When updating a book an amount of authors should be the same, if you want to remove / add an author, you should delete the book and add it again with correct amount of authors
 
 ## Setup:
 1. Clone repository
@@ -35,29 +52,25 @@
 5. Run `npm run start`
 
 ## Example:
-GET /
+GET /books/find
 Response: 
 [
     {
         "id": 1
         "title": "The Lord Of The Rings",
-        "author": "J.R.R. Tolkien"
+        "authors": [ "J.R.R. Tolkien" ]
     },
     {
         "id": 2
         "title": "The Witcher",
-        "author": "Andrzej Sapkowski"
+        "authors": [ "Andrzej Sapkowski" ]
     }
 ]
-POST /
+POST /books/add
 Body: 
 {
     "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J. K. Rowling"
+    "authors": [ "J. K. Rowling" ]
 }
 Response: 
-{
-    "id": 3
-    "title": "Harry Potter and the Sorcerer's Stone",
-    "author": "J. K. Rowling"
-}
+{ Book added }
