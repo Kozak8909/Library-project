@@ -9,7 +9,7 @@
 
 - Integrated CRUD-operations through methods: GET, POST, PUT, DELETE.
 
-- Registration and authorization (no authentication yet, let's assume this is done only for the employees of the library)
+- Registration and authentication (no authorization yet, let's assume this is done only for the employees of the library)
 
 - Automatically loging errors by use of custom middleware
 
