@@ -42,7 +42,9 @@
 ### Notice:
 
 - If you are going to test the api using tools like Postman (which do not send information about origin of request), include || !origin in the if statement in corsOptions.ts, otherwise CORS will not allow any actions. 
-- When updating a book an amount of authors should be the same, if you want to remove / add an author, you should delete the book and add it again with correct amount of authors
+- When updating a book an amount of authors should be the same, if you want to remove / add an author, you should delete the book and add it again with correct amount of authors.
+- The assignment of the role "User" is handled inside the database and it is set by the default.
+- To access add, update, and delete you should manually give an admin role (5150) to the user in the table userroles in your database.  
 
 ## Setup:
 1. Clone repository
