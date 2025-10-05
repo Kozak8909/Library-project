@@ -7,23 +7,29 @@ export const registerUser = async (req: Request, res: Response) => {
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({"message": "All fields are required"});
     }
-    const duplicate = (await pool.query("SELECT email FROM users WHERE email = $1;", [email])).rows[0].email;
+    const duplicate = (await pool.query("SELECT email FROM users WHERE email = $1;", [email])).rows[0];
 
     if (duplicate) return res.sendStatus(409);
     
+    const client = await pool.connect();
+
     try {
+        await client.query("BEGIN");
         const encryptedPWD = await bcrypt.hash(password, 10);
-        await pool.query(`
+        const id = (await client.query(`
             INSERT INTO users (
             first_name,
             last_name,
             email,
             password
             ) 
-            VALUES ( $1, $2, $3, $4 );
-            `, [firstName, lastName, email, encryptedPWD]);
-            res.status(201).json({"success": "User created"});
+            VALUES ( $1, $2, $3, $4 ) RETURNING user_id;
+        `, [firstName, lastName, email, encryptedPWD])).rows[0].user_id;
+        await client.query("INSERT INTO userroles (user_id) VALUES($1);", [id]);    
+        res.status(201).json({"success": "User created"});
+        await client.query("COMMIT");
     } catch (e: any) {
+        await client.query("ROLLBACK");
         res.status(500).json({"message": e.message});
     }
 }

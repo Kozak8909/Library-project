@@ -9,9 +9,9 @@
 
 - Integrated CRUD-operations through methods: GET, POST, PUT, DELETE.
 
-- Registration and authentication (no authorization yet, let's assume this is done only for the employees of the library)
+- Registration, authentication, and authorization (addind, updating, deleting are now available only for admins).
 
-- Automatically loging errors by use of custom middleware
+- Automatically loging errors by use of custom middleware.
 
 - Well-structured project with modular code.
 

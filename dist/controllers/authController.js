@@ -8,13 +8,26 @@ export const authUser = async (req, res) => {
     if (!email || !password) {
         return res.status(400).json({ "message": "All fields are required" });
     }
-    const encryptedPWD = (await pool.query("SELECT password FROM users WHERE email = $1;", [email])).rows[0].password;
+    const user = (await pool.query("SELECT password, user_id FROM users WHERE email = $1;", [email])).rows[0];
+    const encryptedPWD = user.password;
+    const id = user.user_id;
     if (encryptedPWD.length === 0) {
         return res.status(409).json({ "message": "The user is not registered" });
     }
     const match = await bcrypt.compare(password, encryptedPWD);
     if (match) {
-        const accessToken = jwt.sign({ "email": email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' });
+        const roles = (await pool.query(`
+            SELECT ARRAY_AGG(role_id) AS roles 
+            FROM userroles 
+            GROUP BY user_id 
+            HAVING user_id = $1;
+        `, [id])).rows[0].roles;
+        const accessToken = jwt.sign({
+            "User": {
+                "email": email,
+                "roles": roles
+            }
+        }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '5m' });
         const refreshToken = jwt.sign({ "email": email }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '1d' });
         const client = await pool.connect();
         try {

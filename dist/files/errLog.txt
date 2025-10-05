@@ -1,0 +1,18 @@
+Sun Oct 05 2025 20:22:56 GMT+0200 (Central European Summer Time) Error: Not allowed by CORS POST undefined /register
+Sun Oct 05 2025 20:23:49 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:24:25 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:27:04 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:27:24 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:28:20 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:28:54 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:31:36 GMT+0200 (Central European Summer Time) TypeError: Cannot destructure property 'firstName' of 'req.body' as it is undefined. POST undefined /register
+Sun Oct 05 2025 20:32:50 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:33:43 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:34:44 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:38:49 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:39:21 GMT+0200 (Central European Summer Time) SyntaxError: Unexpected token ',', ..." "email": ,
+    "pa"... is not valid JSON POST undefined /register
+Sun Oct 05 2025 20:39:52 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:40:04 GMT+0200 (Central European Summer Time) TypeError: Cannot read properties of undefined (reading 'email') POST undefined /register
+Sun Oct 05 2025 20:42:37 GMT+0200 (Central European Summer Time) error: relation "userrols" does not exist POST undefined /login
+Sun Oct 05 2025 20:46:52 GMT+0200 (Central European Summer Time) error: relation "userrols" does not exist POST undefined /refresh

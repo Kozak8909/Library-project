@@ -1,5 +1,6 @@
 declare namespace Express {
     export interface Request {
-        user?: JWTPayload
+        user?: JWTPayload,
+        roles?: Array<number>
     }
 }

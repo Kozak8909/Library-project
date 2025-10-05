@@ -1,1 +1,1 @@
-{"version":3,"file":"registerController.d.ts","sourceRoot":"","sources":["../../src/controllers/registerController.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAEjD,eAAO,MAAM,YAAY,GAAU,KAAK,OAAO,EAAE,KAAK,QAAQ,4DAwB7D,CAAA"}
+{"version":3,"file":"registerController.d.ts","sourceRoot":"","sources":["../../src/controllers/registerController.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EAAE,OAAO,EAAE,QAAQ,EAAE,MAAM,SAAS,CAAC;AAEjD,eAAO,MAAM,YAAY,GAAU,KAAK,OAAO,EAAE,KAAK,QAAQ,4DA8B7D,CAAA"}
